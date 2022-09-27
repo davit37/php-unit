@@ -1,0 +1,20 @@
+{
+    "name": "davit37/php-unit",
+    "description": "php unit",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Davit37\\PhpUnit\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "davit hermansyah",
+            "email": "davithermansyah37@gmail.com"
+        }
+    ],
+    "require": {
+        "php":"8.0",
+        "phpunit/phpunit": "9.5.*"
+    }
+}
