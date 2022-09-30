@@ -7,24 +7,29 @@ use Davit37\PhpUnit\Person;
 
 class PersonTest extends TestCase
 {
+    private Person $person;
+
+    protected function setUp():void 
+    {
+        $this->person = new Person("Davit");
+    }
     public function testSuccess()
     {
-        $person = new Person("Davit");
-        self::assertEquals("Hello Budi, my name is Davit", $person->sayHello("Budi"));
+
+        self::assertEquals("Hello Budi, my name is Davit", $this->person->sayHello("Budi"));
     }
 
     public function testException()
     {
-        $person = new Person("Davit");
+        
         $this->expectException(\Exception::class);
-        $person->sayHello(null);
+        $this->person->sayHello(null);
        
     }
 
     public function testOutput()
     {
-        $person = new Person("Davit");
         $this->expectOutputString("Good Bye Budi".PHP_EOL);
-        $person->sayGoodBy("Budi");
+        $this->person->sayGoodBy("Budi");
     }
 }
