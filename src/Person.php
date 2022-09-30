@@ -13,4 +13,11 @@ class Person
 
         return "Hello $name, my name is $this->name";
     }
+
+    public function sayGoodBy(?string $name) 
+    {
+        echo "Good Bye $name".PHP_EOL;
+    }
+
+
 }
