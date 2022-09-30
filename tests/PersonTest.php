@@ -11,8 +11,18 @@ class PersonTest extends TestCase
 
     protected function setUp():void 
     {
+        
+    }
+
+    /**
+     * @before
+     */
+    public function createFunction() 
+    {
         $this->person = new Person("Davit");
     }
+
+
     public function testSuccess()
     {
 
