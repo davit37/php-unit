@@ -52,6 +52,19 @@ class CounterTest extends TestCase
     public function testSecond(Counter $counter): void
     {
         $this->counter->increment();
-        $this->assertEquals(2, $this->counter->getCounter());
+        $this->assertEquals(1, $this->counter->getCounter());
+    }
+
+    protected function tearDown():void 
+    {
+        echo "Tear Down".PHP_EOL;
+    }
+
+    /** 
+     * @after
+     */
+    protected function after():void 
+    {
+        echo "After".PHP_EOL;
     }
 }
