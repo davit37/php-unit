@@ -7,6 +7,11 @@
             "Davit37\\PhpUnit\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Davit37\\PhpUnit\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "davit hermansyah",
@@ -16,5 +21,8 @@
     "require": {
         "php":"8.0",
         "phpunit/phpunit": "9.5.*"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }
