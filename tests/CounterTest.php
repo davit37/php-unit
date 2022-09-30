@@ -7,18 +7,24 @@ use PHPUnit\Framework\Assert;
 
 class CounterTest extends TestCase
 {
+    private Counter $counter;
+    protected function setUp():void 
+    {
+        $this->counter = new Counter;
+        echo "Membuat Counter".PHP_EOL;
+    }
+
     public function test_counter()
     {
-        $counter = new Counter;
 
-        $counter->increment();
-        Assert::assertEquals(1, $counter->getCounter());
+        $this->counter->increment();
+        Assert::assertEquals(1, $this->counter->getCounter());
 
-        $counter->increment();
-        $this->assertEquals(2, $counter->getCounter());
+        $this->counter->increment();
+        $this->assertEquals(2, $this->counter->getCounter());
 
-        $counter->increment();
-        self::assertEquals(3, $counter->getCounter());
+        $this->counter->increment();
+        self::assertEquals(3, $this->counter->getCounter());
 
     }
 
@@ -27,19 +33,17 @@ class CounterTest extends TestCase
      */
     public function increment()
     {
-        $counter = new Counter;
-        $counter->increment();
-        self::assertEquals(1, $counter->getCounter());
+        $this->counter->increment();
+        self::assertEquals(1, $this->counter->getCounter());
 
     }
 
     public function testFirst(): Counter 
     {
-        $counter = new Counter;
-        $counter->increment();
-        $this->assertEquals(1, $counter->getCounter());
+        $this->counter->increment();
+        $this->assertEquals(1, $this->counter->getCounter());
 
-        return $counter;
+        return $this->counter;
     }
 
     /**
@@ -47,7 +51,7 @@ class CounterTest extends TestCase
      */
     public function testSecond(Counter $counter): void
     {
-        $counter->increment();
-        $this->assertEquals(2, $counter->getCounter());
+        $this->counter->increment();
+        $this->assertEquals(2, $this->counter->getCounter());
     }
 }
