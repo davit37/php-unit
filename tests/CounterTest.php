@@ -14,6 +14,15 @@ class CounterTest extends TestCase
         echo "Membuat Counter".PHP_EOL;
     }
 
+    public function testIncrement()
+    {
+        $this->assertEquals(0, $this->counter->getCounter());
+        $this->markTestIncomplete("//TODO not complete");
+
+        echo "Tidak Akan Di Eksekusi";
+        //TODO not complete
+    }
+
     public function test_counter()
     {
 
@@ -33,6 +42,8 @@ class CounterTest extends TestCase
      */
     public function increment()
     {
+        $this->markTestSkipped("Test Di Skip");
+        echo "Tidak Akan Di Eksekusi";
         $this->counter->increment();
         self::assertEquals(1, $this->counter->getCounter());
 
@@ -66,5 +77,22 @@ class CounterTest extends TestCase
     protected function after():void 
     {
         echo "After".PHP_EOL;
+    }
+
+    /** 
+     * @requires OSFAMILY windows
+     */
+    public function testOnlyWindows()
+    {
+        $this->assertTrue(true, "Only In Windows");
+    }
+
+    /** 
+     * @requires PHP >= 8
+     * @requires OSFAMILY Darwin
+     */
+    public function testOnlyForMacAndPHP8() 
+    {
+        $this->assertTrue(true, "Only In Mac And PHP 8");
     }
 }
