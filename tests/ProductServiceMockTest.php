@@ -94,14 +94,18 @@ class ProductServiceMockTest extends TestCase
 
     public function testDelete()
     {
-        $this->repository->expects($this->once())
-        ->method("delete");
-
         $product = new Product();
         $product->setId("1");
 
-        $this->repository->method("findById")
-        ->willReturn($product);
+        $this->repository->expects($this->once())
+        ->method("delete")
+        ->with(self::equalTo($product));
+
+        $this->repository
+        ->expects($this->once())
+        ->method("findById")
+        ->willReturn($product)
+        ->with(self::equalTo("1"));
 
         $this->service->delete("1");
         self::assertTrue(true, "Success Delete");
@@ -113,7 +117,10 @@ class ProductServiceMockTest extends TestCase
         ->method("delete");
 
         $this->expectException(\Exception::class);
-        $this->repository->method("findById")
+        $this->repository
+        ->expects($this->once())
+        ->method("findById")
+        ->with(self::equalTo("1"))
         ->willReturn(null);
 
         $this->service->delete(1);
@@ -124,9 +131,13 @@ class ProductServiceMockTest extends TestCase
     {
         $this->repository->expects($this->never())
         ->method("delete");
-        
+
         $this->expectException(\Exception::class);
-        $this->repository->method("findById")->willReturn(null);
+        $this->repository
+        ->expects($this->once())
+        ->method("findById")
+        ->with(self::equalTo("1"))
+        ->willReturn(null);
 
         $this->service->delete("1");
     }
