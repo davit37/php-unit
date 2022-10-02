@@ -34,7 +34,7 @@ class MathTest extends TestCase
     }
 
     /**
-     * @testWith [5, [5, 5]]
+     * @testWith [10, [5, 5]]
      *           [20, [4, 4, 4, 4, 4]]
      *           [9, [3, 3, 3]]
      *           [0, []]
